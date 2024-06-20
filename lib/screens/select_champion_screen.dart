@@ -45,7 +45,9 @@ class _SelectChampionState extends State<SelectChampion> {
     return AppBar(
       leading: IconButton(
         icon: const Icon(Icons.arrow_back),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
       actions: [
         IconButton(
