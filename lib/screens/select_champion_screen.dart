@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shoppingcart/constants.dart';
 import 'package:flutter_shoppingcart/widgets/champion_detail.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SelectChampion extends StatefulWidget {
   const SelectChampion({super.key});
@@ -52,7 +53,56 @@ class _SelectChampionState extends State<SelectChampion> {
       actions: [
         IconButton(
           icon: const Icon(Icons.computer_outlined),
-          onPressed: () {},
+          // onPressed: () async {
+          // final url = Uri.parse('https://www.op.gg/');
+          // if (await canLaunchUrl(url)) {
+          //   launchUrl(url);
+          // } else {
+          //   // ignore: avoid_print
+          //   print("Can't launch $url");
+          //   }
+          onPressed: () {
+            showDialog(
+              context: context,
+              barrierDismissible: true,
+              builder: ((context) {
+                return AlertDialog(
+                  title: const Text("OPGG로\n이동하시겠습니까?"),
+                  actions: <Widget>[
+                    SizedBox(
+                      child: TextButton(
+                        onPressed: () async {
+                          final url = Uri.parse('https://www.op.gg/');
+                          Navigator.of(context).pop();
+                          if (await canLaunchUrl(url)) {
+                            launchUrl(url);
+                          } else {
+                            // ignore: avoid_print
+                            print("Can't launch $url");
+                          }
+                        },
+                        child: const Text(
+                          "네",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(
+                          "아니요",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }),
+            );
+          },
         ),
         const SizedBox(width: 16),
       ],
