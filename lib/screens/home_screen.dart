@@ -26,10 +26,12 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const SelectChampion();
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return const SelectChampion();
+                      }),
+                    );
                   },
                   child: const Text(
                     "챔피언 선택하러 가기",

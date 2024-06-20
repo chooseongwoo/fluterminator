@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shoppingcart/constants.dart';
+import 'package:flutter_shoppingcart/screens/reviews_screen.dart';
 
 class ChampionDetail extends StatelessWidget {
   final String name, price;
@@ -27,7 +28,7 @@ class ChampionDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildDetailNameAndPrice(),
-            _buildDetailRatingAndReviewCount(),
+            _buildDetailRatingAndReviewCount(context),
             _buildDetailColorOptions(),
             _buildDetailButton(context),
           ],
@@ -62,7 +63,7 @@ class ChampionDetail extends StatelessWidget {
     );
   }
 
-  Widget _buildDetailRatingAndReviewCount() {
+  Widget _buildDetailRatingAndReviewCount(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Row(
@@ -75,8 +76,24 @@ class ChampionDetail extends StatelessWidget {
               const Icon(Icons.star, color: Colors.yellow),
           // 2. Spacer()로 Icon위젯과 Text위젯을 양끝으로 벌릴 수 있다. spaceBetween과 동일
           const Spacer(),
-          const Text("review "),
-          Text("($review)", style: const TextStyle(color: Colors.blue)),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ReviewsScreen(
+                    name: name,
+                  ),
+                ),
+              );
+            },
+            child: Row(
+              children: [
+                const Text("review "),
+                Text("($review)", style: const TextStyle(color: Colors.blue)),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -169,7 +186,7 @@ class ChampionDetail extends StatelessWidget {
           ),
         ),
         child: const Text(
-          "Pick Champion",
+          "챔피언 선택하기",
           style: TextStyle(color: Colors.white),
         ),
       ),
