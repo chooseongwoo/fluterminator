@@ -30,10 +30,14 @@ class _ChampionCompareScreenState extends State<ChampionCompareScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: 20),
-          _buildComparisonItem("이름", widget.champion1.name, widget.champion2.name),
-          _buildComparisonItem("가격", widget.champion1.price, widget.champion2.price),
-          _buildComparisonItem("평점", widget.champion1.rate.toString(), widget.champion2.rate.toString()),
-          _buildComparisonItem("리뷰 수", widget.champion1.review.toString(), widget.champion2.review.toString()),
+          _buildComparisonItem(
+              "이름", widget.champion1.name, widget.champion2.name),
+          _buildComparisonItem(
+              "가격", widget.champion1.price, widget.champion2.price),
+          _buildComparisonItem("평점", widget.champion1.rate.toString(),
+              widget.champion2.rate.toString()),
+          _buildComparisonItem("리뷰 수", widget.champion1.review.toString(),
+              widget.champion2.review.toString()),
           const SizedBox(height: 20),
           _buildButton(),
         ],
@@ -43,8 +47,7 @@ class _ChampionCompareScreenState extends State<ChampionCompareScreen> {
 
   Widget _buildComparisonItem(String title, String value1, String value2) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical
-      padding: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -71,12 +71,11 @@ class ChampionDetail extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: Row(
         children: [
-          if (rate >= 1 && rate <= 5)
-            for (int i = 0; i < rate; i++)
-              const Icon(Icons.star, color: Colors.yellow)
-          else
-            for (int i = 0; i < 3; i++)
-              const Icon(Icons.star, color: Colors.yellow),
+          for (int i = 0; i < 5; i++)
+            Icon(
+              i < rate ? Icons.star : Icons.star_border,
+              color: i < rate ? Colors.yellow : Colors.grey,
+            ),
           const Spacer(),
           TextButton(
             onPressed: () {
