@@ -18,7 +18,7 @@ class ReviewWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(20),
       width: MediaQuery.of(context).size.width,
-      height: 100,
+      height: 112,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

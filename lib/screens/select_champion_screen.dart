@@ -82,7 +82,7 @@ class _SelectChampionState extends State<SelectChampion> {
                           }
                         },
                         child: const Text(
-                          "네",
+                          "ㅇ",
                           style: TextStyle(color: Colors.blue),
                         ),
                       ),
